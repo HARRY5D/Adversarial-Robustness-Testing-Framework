@@ -415,4 +415,4 @@ For questions about:
 
 **Built with**: PyTorch, FastAPI, SQLite  
 **Version**: 1.0.0  
-**Status**: Production-Ready ✅
+**Status**: Currently supports registered models; architecture is extensible to user-uploaded models with strict validation. ✅
