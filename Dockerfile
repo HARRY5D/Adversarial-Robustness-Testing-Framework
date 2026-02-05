@@ -21,9 +21,8 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Copy application code
 COPY app/ ./app/
 COPY models/ ./models/
-COPY data/ ./data/
 
-# Create database directory
+# Create data directory (CIFAR-10 will be downloaded automatically)
 RUN mkdir -p /app/data
 
 # Expose port
