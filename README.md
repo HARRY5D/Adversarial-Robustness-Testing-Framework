@@ -10,7 +10,23 @@ license: mit
 
 # 🛡️ Adversarial Robustness Testing API
 
+[![Hugging Face Spaces](https://img.shields.io/badge/🤗%20Hugging%20Face-Spaces-blue)](https://huggingface.co/spaces/HP25/adversarial-robustness-Tester)
+[![API Status](https://img.shields.io/badge/API-Live-brightgreen)](https://hp25-adversarial-robustness-tester.hf.space/health)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
 A production-ready FastAPI service for testing machine learning model security against adversarial attacks. Evaluate how robust your models are against FGSM and PGD attacks.
+
+## 🌐 **Live Demo - Try It Now!**
+
+**🚀 API Endpoint:** `https://hp25-adversarial-robustness-tester.hf.space`
+
+**📚 Interactive Docs:** [https://hp25-adversarial-robustness-tester.hf.space/docs](https://hp25-adversarial-robustness-tester.hf.space/docs)
+
+**✅ Status Check:** [https://hp25-adversarial-robustness-tester.hf.space/health](https://hp25-adversarial-robustness-tester.hf.space/health)
+
+> **No installation required!** The API is deployed on Hugging Face Spaces and ready to use.
+
+---
 
 ## 🎯 What Does This Do?
 
@@ -30,7 +46,8 @@ Attack Success: 86.9%  ← Attack highly effective
 ```python
 import requests
 
-API_URL = "https://huggingface.co/spaces/YOUR_USERNAME/adversarial-robustness-tester"
+# Use the live deployed API
+API_URL = "https://hp25-adversarial-robustness-tester.hf.space"
 
 # Run PGD attack on CIFAR-10
 response = requests.post(f"{API_URL}/run_attack", json={
@@ -46,39 +63,42 @@ print(f"Robust Accuracy: {result['robust_accuracy']}%")
 print(f"Attack Success Rate: {result['attack_success_rate']}%")
 ```
 
-### Interactive Documentation
+### Try in Browser (No Code Required!)
 
-Access the interactive API docs at `/docs` endpoint to test all features directly in your browser.
+**Interactive Swagger UI:** [https://hp25-adversarial-robustness-tester.hf.space/docs](https://hp25-adversarial-robustness-tester.hf.space/docs)
+
+Click "Try it out" on any endpoint to test directly in your browser!
 
 ## 📡 Available Endpoints
 
+**Base URL:** `https://hp25-adversarial-robustness-tester.hf.space`
+
 ### 1. `/health` - Check API Status
 ```bash
-GET /health
+curl https://hp25-adversarial-robustness-tester.hf.space/health
 ```
 Returns available models and system status.
 
 ### 2. `/run_attack` - Test Model Robustness
 ```bash
-POST /run_attack
-Content-Type: application/json
-
-{
-  "model_name": "cifar10_resnet20",
-  "attack": "pgd",
-  "epsilon": 0.05,
-  "num_samples": 1000
-}
+curl -X POST "https://hp25-adversarial-robustness-tester.hf.space/run_attack" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "model_name": "cifar10_resnet20",
+    "attack": "pgd",
+    "epsilon": 0.05,
+    "num_samples": 500
+  }'
 ```
 
 ### 3. `/results/recent` - Get Historical Results
 ```bash
-GET /results/recent?limit=10
+curl "https://hp25-adversarial-robustness-tester.hf.space/results/recent?limit=10"
 ```
 
 ### 4. `/results/robustness_curve/{model}/{attack}` - Get Robustness Data
 ```bash
-GET /results/robustness_curve/cifar10_resnet20/pgd
+curl "https://hp25-adversarial-robustness-tester.hf.space/results/robustness_curve/cifar10_resnet20/pgd"
 ```
 
 ## 🎨 Supported Models
@@ -158,7 +178,32 @@ Testing robustness ensures your models are ready for real-world deployment.
 - **Backend**: FastAPI + Uvicorn
 - **ML**: PyTorch 2.0+
 - **Database**: SQLite
-- **Deployment**: Docker on Hugging Face Spaces
+- **Deployment**: Docker on Hugging Face Spaces ✅
+- **Status**: Live and production-ready
+
+## 🖥️ Local Development
+
+Want to run locally? Clone and run:
+
+```bash
+git clone https://github.com/HARRY5D/Adversarial-Robustness-Testing-Framework.git
+cd Adversarial-Robustness-Testing-Framework
+pip install -r requirements.txt
+python -m uvicorn app.main:app --reload
+```
+
+Access at `http://localhost:8000`
+
+## 📦 Deploy Your Own
+
+Deploy your own instance on Hugging Face Spaces:
+
+1. Fork this repository
+2. Create a new Space on Hugging Face
+3. Select "Docker" SDK
+4. Push code to your Space
+
+See [DEPLOYMENT_CHECKLIST.md](DEPLOYMENT_CHECKLIST.md) for detailed instructions.
 
 ## 📄 License
 
@@ -166,8 +211,19 @@ MIT License - Free for research and educational use
 
 ## 🤝 Contributing
 
-Found a bug? Have a feature request? Open an issue!
+Found a bug? Have a feature request? Open an issue on [GitHub](https://github.com/HARRY5D/Adversarial-Robustness-Testing-Framework)!
+
+## 🔗 Links
+
+- **Live API**: [https://hp25-adversarial-robustness-tester.hf.space](https://hp25-adversarial-robustness-tester.hf.space)
+- **API Docs**: [https://hp25-adversarial-robustness-tester.hf.space/docs](https://hp25-adversarial-robustness-tester.hf.space/docs)
+- **GitHub**: [HARRY5D/Adversarial-Robustness-Testing-Framework](https://github.com/HARRY5D/Adversarial-Robustness-Testing-Framework)
+- **Hugging Face Space**: [HP25/adversarial-robustness-Tester](https://huggingface.co/spaces/HP25/adversarial-robustness-Tester)
+
+## 👨‍💻 Author
+
+**HP25** - [@HARRY5D](https://github.com/HARRY5D)
 
 ---
 
-**Built for ML Security Research** 🔒
+**Built for ML Security Research** 🔒 | **Deployed on Hugging Face Spaces** 🤗
